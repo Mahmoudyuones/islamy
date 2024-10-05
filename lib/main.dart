@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamy/app_them.dart';
 import 'package:islamy/home_screen.dart';
 
 void main() {
@@ -11,7 +12,9 @@ class Islamy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        routes: {HomeScreen.routeName: (_) => HomeScreen()});
+      debugShowCheckedModeBanner: false,
+      routes: {HomeScreen.routeName: (_) => HomeScreen()},
+      theme: AppThem.lightTheme,
+    );
   }
 }
