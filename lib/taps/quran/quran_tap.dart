@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamy/app_them.dart';
 import 'package:islamy/taps/quran/suar_name_ayat_class.dart';
 import 'package:islamy/taps/quran/sura_content_screen.dart';
 
@@ -119,35 +120,221 @@ class QuranTap extends StatelessWidget {
     "الفلق",
     "الناس"
   ];
+  List<String> numberOfayat = [
+    '7',
+    '286',
+    '200',
+    '176',
+    '120',
+    '165',
+    '206',
+    '75',
+    '129',
+    '109',
+    '123',
+    '111',
+    '43',
+    '52',
+    '99',
+    '128',
+    '111',
+    '110',
+    '98',
+    '135',
+    '112',
+    '78',
+    '118',
+    '64',
+    '77',
+    '227',
+    '93',
+    '88',
+    '69',
+    '60',
+    '34',
+    '30',
+    '73',
+    '54',
+    '45',
+    '83',
+    '182',
+    '88',
+    '75',
+    '85',
+    '54',
+    '53',
+    '89',
+    '59',
+    '37',
+    '38',
+    '29',
+    '18',
+    '45',
+    '60',
+    '49',
+    '62',
+    '55',
+    '78',
+    '96',
+    '29',
+    '22',
+    '13',
+    '11',
+    '11',
+    '18',
+    '12',
+    '12',
+    '30',
+    '52',
+    '52',
+    '44',
+    '28',
+    '28',
+    '20',
+    '40',
+    '31',
+    '50',
+    '40',
+    '46',
+    '42',
+    '29',
+    '19',
+    '36',
+    '25',
+    '22',
+    '17',
+    '19',
+    '26',
+    '30',
+    '20',
+    '15',
+    '11',
+    '8',
+    '8',
+    '19',
+    '5',
+    '8',
+    '8',
+    '11',
+    '3',
+    '11',
+    '8',
+    '3',
+    '5',
+    '7',
+    '3',
+    '5',
+    '4',
+    '6',
+    '5',
+    '6'
+  ];
   @override
   Widget build(BuildContext context) {
+    double hight = MediaQuery.of(context).size.height;
     return Column(
       children: [
         Image.asset(
           'assets/images/quran_header_icn.png',
           height: MediaQuery.sizeOf(context).height * .25,
         ),
-        Expanded(
-          child: ListView.separated(
-            padding: const EdgeInsets.only(top: 12),
-            separatorBuilder: (_, __) => const SizedBox(
-              height: 12,
-            ),
-            itemBuilder: (_, index) => InkWell(
-              onTap: () {
-                Navigator.of(context).pushNamed(SuraContentScreen.routeName,
-                    arguments: SuarNameAyatClass(
-                      index: index,
-                      suraName: suranames[index],
-                    ));
-              },
-              child: Text(
-                suranames[index],
-                style: Theme.of(context).textTheme.headlineSmall,
-                textAlign: TextAlign.center,
+        Row(
+          children: [
+            Expanded(
+                child: Container(
+              height: hight * (47 / 870),
+              decoration: const BoxDecoration(
+                border: Border(
+                  top: BorderSide(
+                      width: 3.0, color: AppThem.lightPrimary), // Top border
+                  right: BorderSide(
+                      width: 1.5, color: AppThem.lightPrimary), // Right border
+                  bottom: BorderSide(
+                      width: 3.0, color: AppThem.lightPrimary), // Bottom border
+                  left: BorderSide(
+                      width: 3.0, color: AppThem.lightPrimary), // Left border
+                ),
               ),
-            ),
-            itemCount: suranames.length,
+              child: const Center(
+                  child: Text('عدد الآيات',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 25,
+                          color: AppThem.black))),
+            )),
+            Expanded(
+                child: Container(
+              height: hight * (47 / 870),
+              decoration: const BoxDecoration(
+                border: Border(
+                  top: BorderSide(
+                      width: 3.0, color: AppThem.lightPrimary), // Top border
+                  right: BorderSide(
+                      width: 3, color: AppThem.lightPrimary), // Right border
+                  bottom: BorderSide(
+                      width: 3.0, color: AppThem.lightPrimary), // Bottom border
+                  left: BorderSide(
+                      width: 1.5, color: AppThem.lightPrimary), // Left border
+                ),
+              ),
+              child: const Center(
+                  child: Text('إسم السورة',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 25,
+                          color: AppThem.black))),
+            ))
+          ],
+        ),
+        Expanded(
+          child: Row(
+            children: [
+              Expanded(
+                child: ListView.separated(
+                  padding: const EdgeInsets.only(top: 12),
+                  separatorBuilder: (_, __) => const SizedBox(
+                    height: 12,
+                  ),
+                  itemBuilder: (_, index) => InkWell(
+                    onTap: () {},
+                    child: Text(
+                      numberOfayat[index],
+                      style: Theme.of(context).textTheme.headlineSmall,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  itemCount: numberOfayat.length,
+                ),
+              ),
+              Container(
+                width: 3,
+                color: AppThem.lightPrimary,
+              ),
+              Expanded(
+                child: ListView.separated(
+                  padding: const EdgeInsets.only(top: 12),
+                  separatorBuilder: (_, __) => const SizedBox(
+                    height: 12,
+                  ),
+                  itemBuilder: (_, index) => InkWell(
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed(SuraContentScreen.routeName,
+                              arguments: SuarNameAyatClass(
+                                index: index,
+                                suraName: suranames[index],
+                              ));
+                    },
+                    child: Text(
+                      suranames[index],
+                      style: Theme.of(context).textTheme.headlineSmall,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  itemCount: suranames.length,
+                ),
+              ),
+            ],
           ),
         )
       ],
