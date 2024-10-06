@@ -10,6 +10,7 @@ class AppThem {
   static ThemeData lightTheme = ThemeData(
       primaryColor: lightPrimary,
       appBarTheme: const AppBarTheme(
+          foregroundColor: black,
           backgroundColor: Colors.transparent,
           centerTitle: true,
           titleTextStyle: TextStyle(
@@ -20,7 +21,13 @@ class AppThem {
         backgroundColor: lightPrimary,
         selectedItemColor: black,
         unselectedItemColor: white,
-      ));
+      ),
+      textTheme: const TextTheme(
+          headlineSmall: TextStyle(
+              fontSize: 25, fontWeight: FontWeight.w400, color: black),
+          titleLarge: TextStyle(
+              fontSize: 20, fontWeight: FontWeight.w400, color: black)));
+
   static ThemeData darkTheme = ThemeData(
     primaryColor: darkPrimary,
   );
