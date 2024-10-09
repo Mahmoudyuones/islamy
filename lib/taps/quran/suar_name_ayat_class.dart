@@ -1,5 +1,3 @@
-import 'package:flutter/services.dart';
-
 class SuarNameAyatClass {
   int index;
   String suraName;

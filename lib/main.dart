@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islamy/app_them.dart';
 import 'package:islamy/home_screen.dart';
+import 'package:islamy/taps/hadeth/hadeth_content_screen.dart';
 import 'package:islamy/taps/quran/sura_content_screen.dart';
 
 void main() {
@@ -16,7 +17,8 @@ class Islamy extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         HomeScreen.routeName: (_) => HomeScreen(),
-        SuraContentScreen.routeName: (_) => SuraContentScreen()
+        SuraContentScreen.routeName: (_) => SuraContentScreen(),
+        HadethContentScreen.routeName: (_) => HadethContentScreen(),
       },
       theme: AppThem.lightTheme,
       darkTheme: AppThem.darkTheme,

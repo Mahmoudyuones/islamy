@@ -229,6 +229,8 @@ class QuranTap extends StatelessWidget {
     '5',
     '6'
   ];
+
+  QuranTap({super.key});
   @override
   Widget build(BuildContext context) {
     double hight = MediaQuery.of(context).size.height;
@@ -287,56 +289,46 @@ class QuranTap extends StatelessWidget {
           ],
         ),
         Expanded(
-          child: Row(
-            children: [
-              Expanded(
-                child: ListView.separated(
-                  padding: const EdgeInsets.only(top: 12),
-                  separatorBuilder: (_, __) => const SizedBox(
-                    height: 12,
-                  ),
-                  itemBuilder: (_, index) => InkWell(
-                    onTap: () {},
+          child: ListView.separated(
+            padding: const EdgeInsets.only(top: 0),
+            separatorBuilder: (_, __) => const SizedBox(
+              height: 0,
+            ),
+            itemBuilder: (_, index) => InkWell(
+              onTap: () {
+                Navigator.of(context).pushNamed(SuraContentScreen.routeName,
+                    arguments: SuarNameAyatClass(
+                      index: index,
+                      suraName: suranames[index],
+                    ));
+              },
+              child: Row(
+                children: [
+                  Expanded(
                     child: Text(
                       numberOfayat[index],
                       style: Theme.of(context).textTheme.headlineSmall,
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  itemCount: numberOfayat.length,
-                ),
-              ),
-              Container(
-                width: 3,
-                color: AppThem.lightPrimary,
-              ),
-              Expanded(
-                child: ListView.separated(
-                  padding: const EdgeInsets.only(top: 12),
-                  separatorBuilder: (_, __) => const SizedBox(
-                    height: 12,
+                  Container(
+                    height: 50,
+                    width: 3,
+                    color: AppThem.lightPrimary,
                   ),
-                  itemBuilder: (_, index) => InkWell(
-                    onTap: () {
-                      Navigator.of(context)
-                          .pushNamed(SuraContentScreen.routeName,
-                              arguments: SuarNameAyatClass(
-                                index: index,
-                                suraName: suranames[index],
-                              ));
-                    },
+                  Expanded(
                     child: Text(
                       suranames[index],
                       style: Theme.of(context).textTheme.headlineSmall,
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  itemCount: suranames.length,
-                ),
+                ],
               ),
-            ],
+            ),
+            itemCount: suranames.length,
           ),
-        )
+        ),
       ],
     );
   }

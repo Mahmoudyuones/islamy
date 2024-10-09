@@ -5,8 +5,12 @@ class sephaTap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('sepha'),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Center(child: Image.asset('assets/images/head of seb7a.png')),
+        Image.asset('assets/images/body of seb7a.png')
+      ],
     );
   }
 }

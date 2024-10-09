@@ -1,25 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:islamy/app_them.dart';
 import 'package:islamy/taps/quran/suar_name_ayat_class.dart';
+import 'package:islamy/widgets/loading_indecator.dart';
 
-class SuraContentScreen extends StatelessWidget {
+class SuraContentScreen extends StatefulWidget {
   static const String routeName = '/sura_content';
-  List<String> ayat = [
-    '"بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ "',
-    '',
-    'الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ',
-    ' الرَّحْمَنِ الرَّحِيمِ',
-    ' مَالِكِ يَوْمِ الدِّينِ',
-    ' إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ',
-    ' اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ',
-    ' صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّين',
-  ];
+
+  SuraContentScreen({super.key});
+
+  @override
+  State<SuraContentScreen> createState() => _SuraContentScreenState();
+}
+
+class _SuraContentScreenState extends State<SuraContentScreen> {
+  List<String> ayat = [];
+
   late SuarNameAyatClass arg;
 
   @override
   Widget build(BuildContext context) {
     arg = ModalRoute.of(context)!.settings.arguments as SuarNameAyatClass;
-    loadSuraFile();
+    if (ayat.isEmpty) {
+      loadSuraFile();
+    }
     return Container(
         decoration: BoxDecoration(
             image: DecorationImage(
@@ -35,17 +39,22 @@ class SuraContentScreen extends StatelessWidget {
                 vertical: MediaQuery.sizeOf(context).height * .05),
             decoration: BoxDecoration(
                 color: AppThem.white, borderRadius: BorderRadius.circular(25)),
-            child: ListView.builder(
-              itemBuilder: (_, index) => Text(ayat[index],
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.titleLarge),
-              itemCount: ayat.length,
-            ),
+            child: ayat.isEmpty
+                ? LoadingIndecator()
+                : ListView.builder(
+                    itemBuilder: (_, index) => Text(ayat[index],
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.titleLarge),
+                    itemCount: ayat.length,
+                  ),
           ),
         ));
   }
 
-  void loadSuraFile() {
-    print('dsf');
+  Future<void> loadSuraFile() async {
+    String sura =
+        await rootBundle.loadString('assets/text/${arg.index + 1}.txt');
+    ayat = sura.split('\r\n');
+    setState(() {});
   }
 }
