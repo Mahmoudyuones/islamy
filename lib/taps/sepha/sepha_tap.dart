@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:islamy/app_them.dart';
+import 'package:islamy/taps/settings/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 class sephaTap extends StatefulWidget {
   const sephaTap({super.key});
@@ -18,6 +20,7 @@ class _sephaTapState extends State<sephaTap> {
   String tasbehname = 'سبحان الله';
   @override
   Widget build(BuildContext context) {
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     double hight = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
@@ -29,18 +32,22 @@ class _sephaTapState extends State<sephaTap> {
         Stack(
           children: [
             Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 SizedBox(
-                  height: hight * 36 / hight,
+                  height: settingsProvider.isDark
+                      ? hight * 70 / hight
+                      : hight * 35 / hight,
                 ),
                 Center(
                   child: Transform.rotate(
                     angle: angle * pi / 180,
                     child: Image.asset(
-                      'assets/images/body of seb7a.png',
+                      'assets/images/${settingsProvider.sebhaImageName}.png',
                       fit: BoxFit.fill,
-                      height: hight * .35,
-                      width: width * .8,
+                      height:
+                          settingsProvider.isDark ? .30 * hight : .35 * hight,
+                      width: settingsProvider.isDark ? .7 * width : .8 * width,
                     ),
                   ),
                 ),
@@ -54,7 +61,7 @@ class _sephaTapState extends State<sephaTap> {
                   width: width * .1,
                 ),
                 Image.asset(
-                  'assets/images/head of seb7a.png',
+                  'assets/images/${settingsProvider.headSebhaImageName}.png',
                   fit: BoxFit.fill,
                   height: hight * .12,
                   width: width * .2,
@@ -62,6 +69,9 @@ class _sephaTapState extends State<sephaTap> {
               ],
             )),
           ],
+        ),
+        SizedBox(
+          height: settingsProvider.isDark ? hight * .02 : 0,
         ),
         Text(
           'عدد التسبيحات',
@@ -71,7 +81,9 @@ class _sephaTapState extends State<sephaTap> {
           margin: EdgeInsets.symmetric(vertical: hight * 22 / hight),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: AppThem.lightPrimary,
+            color: settingsProvider.isDark
+                ? AppThem.darkPrimary
+                : AppThem.lightPrimary.withOpacity(.4),
           ),
           width: width * 69 / width,
           height: hight * 81 / hight,
@@ -93,16 +105,22 @@ class _sephaTapState extends State<sephaTap> {
             setState(() {});
           },
           style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.symmetric(
-                  vertical: hight * 5 / hight, horizontal: width * 15 / width),
-              backgroundColor: AppThem.lightPrimary,
-              foregroundColor: AppThem.white),
+            padding: EdgeInsets.symmetric(
+                vertical: hight * 5 / hight, horizontal: width * 15 / width),
+            backgroundColor:
+                settingsProvider.isDark ? AppThem.gold : AppThem.lightPrimary,
+          ),
           child: Text(
             tasbehname,
-            style: Theme.of(context)
-                .textTheme
-                .headlineSmall
-                ?.copyWith(color: AppThem.white),
+            style: settingsProvider.isDark
+                ? Theme.of(context)
+                    .textTheme
+                    .headlineSmall!
+                    .copyWith(color: AppThem.black)
+                : Theme.of(context)
+                    .textTheme
+                    .headlineSmall!
+                    .copyWith(color: AppThem.white),
           ),
         ),
         const Spacer(),
@@ -116,7 +134,9 @@ class _sephaTapState extends State<sephaTap> {
                   restart();
                 },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: AppThem.lightPrimary,
+                    backgroundColor: settingsProvider.isDark
+                        ? AppThem.gold
+                        : AppThem.lightPrimary,
                     foregroundColor: AppThem.black),
                 child: const Text('Restart'),
               ),

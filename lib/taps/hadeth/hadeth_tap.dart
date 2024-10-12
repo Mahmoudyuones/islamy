@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:islamy/app_them.dart';
 import 'package:islamy/taps/hadeth/hadeth.dart';
 import 'package:islamy/taps/hadeth/hadeth_content_screen.dart';
+import 'package:islamy/taps/settings/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 class HadethTap extends StatefulWidget {
   const HadethTap({super.key});
@@ -16,6 +18,7 @@ class _HadethTapState extends State<HadethTap> {
 
   @override
   Widget build(BuildContext context) {
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     double hight = MediaQuery.of(context).size.height;
     if (ahadeth.isEmpty) {
       loadHadeth();
@@ -29,17 +32,17 @@ class _HadethTapState extends State<HadethTap> {
         Container(
           padding: EdgeInsets.symmetric(vertical: hight * 5 / 870),
           width: double.infinity,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
               border: Border.symmetric(
-                  horizontal:
-                      BorderSide(color: AppThem.lightPrimary, width: 3))),
-          child: const Center(
+                  horizontal: BorderSide(
+                      color: settingsProvider.isDark
+                          ? AppThem.gold
+                          : AppThem.lightPrimary,
+                      width: 3))),
+          child: Center(
             child: Text(
               'الأحاديث',
-              style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w600,
-                  color: AppThem.black),
+              style: Theme.of(context).textTheme.headlineLarge,
             ),
           ),
         ),

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islamy/app_them.dart';
 import 'package:islamy/taps/quran/suar_name_ayat_class.dart';
+import 'package:islamy/taps/settings/settings_provider.dart';
 import 'package:islamy/widgets/loading_indecator.dart';
+import 'package:provider/provider.dart';
 
 class SuraContentScreen extends StatefulWidget {
   static const String routeName = '/sura_content';
@@ -20,6 +22,7 @@ class _SuraContentScreenState extends State<SuraContentScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     arg = ModalRoute.of(context)!.settings.arguments as SuarNameAyatClass;
     if (ayat.isEmpty) {
       loadSuraFile();
@@ -27,7 +30,9 @@ class _SuraContentScreenState extends State<SuraContentScreen> {
     return Container(
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/bg3.png'), fit: BoxFit.fill)),
+                image: AssetImage(
+                    'assets/images/${Provider.of<SettingsProvider>(context).backgrounImageName}.png'),
+                fit: BoxFit.fill)),
         child: Scaffold(
           appBar: AppBar(
             title: Text(arg.suraName),
@@ -38,7 +43,10 @@ class _SuraContentScreenState extends State<SuraContentScreen> {
                 horizontal: 30,
                 vertical: MediaQuery.sizeOf(context).height * .05),
             decoration: BoxDecoration(
-                color: AppThem.white, borderRadius: BorderRadius.circular(25)),
+                color: settingsProvider.isDark
+                    ? AppThem.darkPrimary
+                    : AppThem.white,
+                borderRadius: BorderRadius.circular(25)),
             child: ayat.isEmpty
                 ? LoadingIndecator()
                 : ListView.builder(

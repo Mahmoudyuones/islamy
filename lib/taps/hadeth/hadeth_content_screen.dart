@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islamy/app_them.dart';
 import 'package:islamy/taps/hadeth/hadeth.dart';
+import 'package:islamy/taps/settings/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 class HadethContentScreen extends StatelessWidget {
   static const routeName = 'hadeth-screen';
@@ -9,10 +11,13 @@ class HadethContentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Hadeth hadeth = ModalRoute.of(context)!.settings.arguments as Hadeth;
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/bg3.png'), fit: BoxFit.fill)),
+                image: AssetImage(
+                    'assets/images/${Provider.of<SettingsProvider>(context).backgrounImageName}.png'),
+                fit: BoxFit.fill)),
         child: Scaffold(
           appBar: AppBar(
             title: Text(hadeth.title),
@@ -23,7 +28,10 @@ class HadethContentScreen extends StatelessWidget {
                 horizontal: 30,
                 vertical: MediaQuery.sizeOf(context).height * .05),
             decoration: BoxDecoration(
-                color: AppThem.white, borderRadius: BorderRadius.circular(25)),
+                color: settingsProvider.isDark
+                    ? AppThem.darkPrimary
+                    : AppThem.white,
+                borderRadius: BorderRadius.circular(25)),
             child: ListView.builder(
               itemBuilder: (_, index) => Text(hadeth.content[index],
                   textAlign: TextAlign.center,

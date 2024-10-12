@@ -31,6 +31,25 @@ class AppThem {
               fontSize: 20, fontWeight: FontWeight.w400, color: black)));
 
   static ThemeData darkTheme = ThemeData(
-    primaryColor: darkPrimary,
-  );
+      primaryColor: darkPrimary,
+      appBarTheme: const AppBarTheme(
+          foregroundColor: white,
+          backgroundColor: Colors.transparent,
+          centerTitle: true,
+          titleTextStyle: TextStyle(
+              fontSize: 30, color: white, fontWeight: FontWeight.bold)),
+      scaffoldBackgroundColor: Colors.transparent,
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: darkPrimary,
+        selectedItemColor: gold,
+        unselectedItemColor: white,
+      ),
+      textTheme: const TextTheme(
+          headlineSmall: TextStyle(
+              fontSize: 25, fontWeight: FontWeight.w400, color: white),
+          headlineLarge: TextStyle(
+              fontSize: 25, fontWeight: FontWeight.w600, color: white),
+          titleLarge: TextStyle(
+              fontSize: 20, fontWeight: FontWeight.w400, color: gold)));
 }

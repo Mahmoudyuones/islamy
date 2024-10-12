@@ -3,7 +3,9 @@ import 'package:islamy/taps/hadeth/hadeth_tap.dart';
 import 'package:islamy/taps/quran/quran_tap.dart';
 import 'package:islamy/taps/radio/radio_tap.dart';
 import 'package:islamy/taps/sepha/sepha_tap.dart';
+import 'package:islamy/taps/settings/settings_provider.dart';
 import 'package:islamy/taps/settings/settings_tap.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/';
@@ -25,9 +27,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/bg3.png'), fit: BoxFit.fill)),
+              image: AssetImage(
+                  'assets/images/${Provider.of<SettingsProvider>(context).backgrounImageName}.png'),
+              fit: BoxFit.fill)),
       child: Scaffold(
         appBar: AppBar(
           title: Text('إسلامي'),

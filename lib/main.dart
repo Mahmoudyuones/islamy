@@ -3,9 +3,16 @@ import 'package:islamy/app_them.dart';
 import 'package:islamy/home_screen.dart';
 import 'package:islamy/taps/hadeth/hadeth_content_screen.dart';
 import 'package:islamy/taps/quran/sura_content_screen.dart';
+import 'package:islamy/taps/settings/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(Islamy());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => SettingsProvider(),
+      child: Islamy(),
+    ),
+  );
 }
 
 class Islamy extends StatelessWidget {
@@ -13,6 +20,7 @@ class Islamy extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
@@ -22,7 +30,7 @@ class Islamy extends StatelessWidget {
       },
       theme: AppThem.lightTheme,
       darkTheme: AppThem.darkTheme,
-      themeMode: ThemeMode.light,
+      themeMode: settingsProvider.themeMode,
     );
   }
 }

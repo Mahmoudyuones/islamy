@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:islamy/app_them.dart';
 import 'package:islamy/taps/quran/suar_name_ayat_class.dart';
 import 'package:islamy/taps/quran/sura_content_screen.dart';
+import 'package:islamy/taps/settings/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 class QuranTap extends StatelessWidget {
   List<String> suranames = [
@@ -233,6 +236,7 @@ class QuranTap extends StatelessWidget {
   QuranTap({super.key});
   @override
   Widget build(BuildContext context) {
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     double hight = MediaQuery.of(context).size.height;
     return Column(
       children: [
@@ -245,46 +249,68 @@ class QuranTap extends StatelessWidget {
             Expanded(
                 child: Container(
               height: hight * (47 / 870),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                      width: 3.0, color: AppThem.lightPrimary), // Top border
+                      width: 3.0,
+                      color: settingsProvider.isDark
+                          ? AppThem.gold
+                          : AppThem.lightPrimary), // Top border
                   right: BorderSide(
-                      width: 1.5, color: AppThem.lightPrimary), // Right border
+                      width: 1.5,
+                      color: settingsProvider.isDark
+                          ? AppThem.gold
+                          : AppThem.lightPrimary), // Right border
                   bottom: BorderSide(
-                      width: 3.0, color: AppThem.lightPrimary), // Bottom border
+                      width: 3.0,
+                      color: settingsProvider.isDark
+                          ? AppThem.gold
+                          : AppThem.lightPrimary), // Bottom border
                   left: BorderSide(
-                      width: 3.0, color: AppThem.lightPrimary), // Left border
+                      width: 3.0,
+                      color: settingsProvider.isDark
+                          ? AppThem.gold
+                          : AppThem.lightPrimary), // Left border
                 ),
               ),
-              child: const Center(
-                  child: Text('عدد الآيات',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 25,
-                          color: AppThem.black))),
+              child: Center(
+                  child: Text(
+                'عدد الآيات',
+                style: Theme.of(context).textTheme.headlineLarge,
+              )),
             )),
             Expanded(
                 child: Container(
               height: hight * (47 / 870),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
-                      width: 3.0, color: AppThem.lightPrimary), // Top border
+                      width: 3.0,
+                      color: settingsProvider.isDark
+                          ? AppThem.gold
+                          : AppThem.lightPrimary), // Top border
                   right: BorderSide(
-                      width: 3, color: AppThem.lightPrimary), // Right border
+                      width: 3,
+                      color: settingsProvider.isDark
+                          ? AppThem.gold
+                          : AppThem.lightPrimary), // Right border
                   bottom: BorderSide(
-                      width: 3.0, color: AppThem.lightPrimary), // Bottom border
+                      width: 3.0,
+                      color: settingsProvider.isDark
+                          ? AppThem.gold
+                          : AppThem.lightPrimary), // Bottom border
                   left: BorderSide(
-                      width: 1.5, color: AppThem.lightPrimary), // Left border
+                      width: 1.5,
+                      color: settingsProvider.isDark
+                          ? AppThem.gold
+                          : AppThem.lightPrimary), // Left border
                 ),
               ),
-              child: const Center(
-                  child: Text('إسم السورة',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 25,
-                          color: AppThem.black))),
+              child: Center(
+                  child: Text(
+                'إسم السورة',
+                style: Theme.of(context).textTheme.headlineLarge,
+              )),
             ))
           ],
         ),
@@ -314,7 +340,9 @@ class QuranTap extends StatelessWidget {
                   Container(
                     height: 50,
                     width: 3,
-                    color: AppThem.lightPrimary,
+                    color: settingsProvider.isDark
+                        ? AppThem.gold
+                        : AppThem.lightPrimary,
                   ),
                   Expanded(
                     child: Text(
