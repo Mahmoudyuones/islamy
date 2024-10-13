@@ -5,6 +5,7 @@ import 'package:islamy/taps/hadeth/hadeth_content_screen.dart';
 import 'package:islamy/taps/quran/sura_content_screen.dart';
 import 'package:islamy/taps/settings/settings_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(
@@ -31,6 +32,9 @@ class Islamy extends StatelessWidget {
       theme: AppThem.lightTheme,
       darkTheme: AppThem.darkTheme,
       themeMode: settingsProvider.themeMode,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: Locale(settingsProvider.languageCode),
     );
   }
 }

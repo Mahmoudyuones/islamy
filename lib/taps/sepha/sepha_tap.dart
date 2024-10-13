@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:islamy/app_them.dart';
 import 'package:islamy/taps/settings/settings_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class sephaTap extends StatefulWidget {
   const sephaTap({super.key});
@@ -46,8 +47,8 @@ class _sephaTapState extends State<sephaTap> {
                       'assets/images/${settingsProvider.sebhaImageName}.png',
                       fit: BoxFit.fill,
                       height:
-                          settingsProvider.isDark ? .30 * hight : .35 * hight,
-                      width: settingsProvider.isDark ? .7 * width : .8 * width,
+                          settingsProvider.isDark ? .25 * hight : .35 * hight,
+                      width: settingsProvider.isDark ? .6 * width : .8 * width,
                     ),
                   ),
                 ),
@@ -57,15 +58,29 @@ class _sephaTapState extends State<sephaTap> {
                 child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                settingsProvider.languageCode == 'en'
+                    ? Row(
+                        children: [
+                          SizedBox(
+                            width: width * .2,
+                          ),
+                          Image.asset(
+                            'assets/images/${settingsProvider.headSebhaImageName}.png',
+                            fit: BoxFit.fill,
+                            height: hight * .12,
+                            width: width * .2,
+                          ),
+                        ],
+                      )
+                    : Image.asset(
+                        'assets/images/${settingsProvider.headSebhaImageName}.png',
+                        fit: BoxFit.fill,
+                        height: hight * .12,
+                        width: width * .2,
+                      ),
                 SizedBox(
                   width: width * .1,
-                ),
-                Image.asset(
-                  'assets/images/${settingsProvider.headSebhaImageName}.png',
-                  fit: BoxFit.fill,
-                  height: hight * .12,
-                  width: width * .2,
-                ),
+                )
               ],
             )),
           ],
@@ -74,7 +89,7 @@ class _sephaTapState extends State<sephaTap> {
           height: settingsProvider.isDark ? hight * .02 : 0,
         ),
         Text(
-          'عدد التسبيحات',
+          AppLocalizations.of(context)!.tasbehCounter,
           style: Theme.of(context).textTheme.headlineLarge,
         ),
         Container(
@@ -138,7 +153,7 @@ class _sephaTapState extends State<sephaTap> {
                         ? AppThem.gold
                         : AppThem.lightPrimary,
                     foregroundColor: AppThem.black),
-                child: const Text('Restart'),
+                child: Text(AppLocalizations.of(context)!.restart),
               ),
             ],
           ),
