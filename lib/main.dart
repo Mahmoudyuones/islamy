@@ -6,11 +6,16 @@ import 'package:islamy/taps/quran/sura_content_screen.dart';
 import 'package:islamy/taps/settings/settings_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SettingsProvider settingsProvider = SettingsProvider();
+  await settingsProvider.loadSettings();
+
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => SettingsProvider(),
+    ChangeNotifierProvider<SettingsProvider>(
+      create: (_) => settingsProvider,
       child: Islamy(),
     ),
   );

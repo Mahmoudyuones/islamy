@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsProvider with ChangeNotifier {
   ThemeMode themeMode = ThemeMode.light;
@@ -13,14 +14,30 @@ class SettingsProvider with ChangeNotifier {
   String get headSebhaImageName =>
       isDark ? 'head of seb7a gold' : 'head of seb7a';
 
-  void changeTheme(ThemeMode selectedthemeMode) {
+  Future<void> loadSettings() async {
+    SharedPreferences presf = await SharedPreferences.getInstance();
+    bool isDarkTheme = presf.getBool('is_dark_them') ?? false;
+    String savedLanguage = presf.getString('Language_code') ?? 'en';
+    themeMode = isDarkTheme ? ThemeMode.dark : ThemeMode.light;
+    languageCode = savedLanguage;
+    notifyListeners();
+  }
+
+  Future<void> changeTheme(ThemeMode selectedthemeMode) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isdark = selectedthemeMode == ThemeMode.dark ? true : false;
+    prefs.setBool('is_dark_them', isdark);
+
     if (selectedthemeMode == themeMode) return;
+
     themeMode = selectedthemeMode;
     notifyListeners();
   }
 
-  void changelanguage(String selectdLanguage) {
+  Future<void> changelanguage(String selectdLanguage) async {
     if (selectdLanguage == languageCode) return;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('Language_code', selectdLanguage);
     languageCode = selectdLanguage;
     notifyListeners();
   }
