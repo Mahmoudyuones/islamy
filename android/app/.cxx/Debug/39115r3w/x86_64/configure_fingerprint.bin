@@ -2,6 +2,7 @@ C/C++ Structured LogK
 I
 GC:\flutter\packages\flutter_tools\gradle\src\main\groovy\CMakeLists.txtC
 A
+<<<<<<< HEAD
 ?com.android.build.gradle.internal.cxx.io.EncodedFileFingerPrint	áæõ×Û2§ À‰ÇÉÏ2Y
 W
 UD:\flutter\islamy\android\app\.cxx\Debug\39115r3w\x86_64\additional_project_files.txt	áæõ×Û2 Îæõ×Û2V
@@ -26,3 +27,29 @@ M
 KD:\flutter\islamy\android\app\.cxx\Debug\39115r3w\x86_64\prefab_config.json	áæõ×Û2( Ýæõ×Û2T
 R
 PD:\flutter\islamy\android\app\.cxx\Debug\39115r3w\x86_64\symbol_folder_index.txt	áæõ×Û2G Ýæõ×Û2
+=======
+?com.android.build.gradle.internal.cxx.io.EncodedFileFingerPrint	šùÝÖÛ2§ À‰ÇÉÏ2Y
+W
+UD:\flutter\islamy\android\app\.cxx\Debug\39115r3w\x86_64\additional_project_files.txt	šùÝÖÛ2 ò ÛÒÛ2V
+T
+RD:\flutter\islamy\android\app\.cxx\Debug\39115r3w\x86_64\android_gradle_build.json	šùÝÖÛ2„ ô ÛÒÛ2[
+Y
+WD:\flutter\islamy\android\app\.cxx\Debug\39115r3w\x86_64\android_gradle_build_mini.json	šùÝÖÛ2ß €¡ÛÒÛ2H
+F
+DD:\flutter\islamy\android\app\.cxx\Debug\39115r3w\x86_64\build.ninja	šùÝÖÛ2°Ó  ÛÒÛ2L
+J
+HD:\flutter\islamy\android\app\.cxx\Debug\39115r3w\x86_64\build.ninja.txt	šùÝÖÛ2Q
+O
+MD:\flutter\islamy\android\app\.cxx\Debug\39115r3w\x86_64\build_file_index.txt	šùÝÖÛ2G ƒ¡ÛÒÛ2R
+P
+ND:\flutter\islamy\android\app\.cxx\Debug\39115r3w\x86_64\compile_commands.json	šùÝÖÛ2	V
+T
+RD:\flutter\islamy\android\app\.cxx\Debug\39115r3w\x86_64\compile_commands.json.bin	šùÝÖÛ2
+\
+Z
+XD:\flutter\islamy\android\app\.cxx\Debug\39115r3w\x86_64\metadata_generation_command.txt	šùÝÖÛ2ƒ ¡ÛÒÛ2O
+M
+KD:\flutter\islamy\android\app\.cxx\Debug\39115r3w\x86_64\prefab_config.json	šùÝÖÛ2( ¡ÛÒÛ2T
+R
+PD:\flutter\islamy\android\app\.cxx\Debug\39115r3w\x86_64\symbol_folder_index.txt	›ùÝÖÛ2G ¡ÛÒÛ2
+>>>>>>> feature/radio
