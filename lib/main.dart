@@ -6,7 +6,6 @@ import 'package:islamy/taps/quran/sura_content_screen.dart';
 import 'package:islamy/taps/settings/settings_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +15,7 @@ Future<void> main() async {
   runApp(
     ChangeNotifierProvider<SettingsProvider>(
       create: (_) => settingsProvider,
-      child: Islamy(),
+      child: const Islamy(),
     ),
   );
 }
@@ -30,9 +29,9 @@ class Islamy extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        HomeScreen.routeName: (_) => HomeScreen(),
-        SuraContentScreen.routeName: (_) => SuraContentScreen(),
-        HadethContentScreen.routeName: (_) => HadethContentScreen(),
+        HomeScreen.routeName: (_) => const HomeScreen(),
+        SuraContentScreen.routeName: (_) => const SuraContentScreen(),
+        HadethContentScreen.routeName: (_) => const HadethContentScreen(),
       },
       theme: AppThem.lightTheme,
       darkTheme: AppThem.darkTheme,

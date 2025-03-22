@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:islamy/app_them.dart';
 import 'package:islamy/models/radio_response.dart';
@@ -9,14 +8,14 @@ import 'package:islamy/taps/settings/settings_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
-class radioTap extends StatefulWidget {
-  const radioTap({super.key});
+class RadioTap extends StatefulWidget {
+  const RadioTap({super.key});
 
   @override
-  State<radioTap> createState() => _radioTapState();
+  State<RadioTap> createState() => _RadioTapState();
 }
 
-class _radioTapState extends State<radioTap> {
+class _RadioTapState extends State<RadioTap> {
   int currentIndex = 0;
   int radioListLenght = 0;
   final player = AudioPlayer();
@@ -144,7 +143,6 @@ class _radioTapState extends State<radioTap> {
             IconButton(
                 onPressed: () {
                   if (currentIndex < radioListLenght - 1) {
-                    print(radioListLenght);
                     currentIndex++;
                     if (isPlaying) {
                       player.stop();

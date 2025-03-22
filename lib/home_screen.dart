@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:islamy/main.dart';
 import 'package:islamy/taps/hadeth/hadeth_tap.dart';
 import 'package:islamy/taps/quran/quran_tap.dart';
 import 'package:islamy/taps/radio/radio_tap.dart';
@@ -21,10 +20,10 @@ class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
   List<Widget> taps = [
     QuranTap(),
-    HadethTap(),
-    sephaTap(),
-    radioTap(),
-    settingsTap(),
+    const HadethTap(),
+    const SephaTap(),
+    const RadioTap(),
+    const SettingsTap(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -47,19 +46,20 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             items: [
               BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage('assets/images/moshaf_gold.png')),
+                  icon: const ImageIcon(
+                      AssetImage('assets/images/moshaf_gold.png')),
                   label: AppLocalizations.of(context)!.quran),
               BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage('assets/images/hadeth.png')),
+                  icon: const ImageIcon(AssetImage('assets/images/hadeth.png')),
                   label: AppLocalizations.of(context)!.hadeth),
               BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage('assets/images/sebha.png')),
+                  icon: const ImageIcon(AssetImage('assets/images/sebha.png')),
                   label: AppLocalizations.of(context)!.sebha),
               BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage('assets/images/radio.png')),
+                  icon: const ImageIcon(AssetImage('assets/images/radio.png')),
                   label: AppLocalizations.of(context)!.radio),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.settings_outlined),
+                  icon: const Icon(Icons.settings_outlined),
                   label: AppLocalizations.of(context)!.islamy),
             ]),
       ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:islamy/app_them.dart';
 import 'package:islamy/taps/quran/suar_name_ayat_class.dart';
 import 'package:islamy/taps/quran/sura_content_screen.dart';
@@ -7,7 +6,7 @@ import 'package:islamy/taps/settings/settings_provider.dart';
 import 'package:provider/provider.dart';
 
 class QuranTap extends StatelessWidget {
-  List<String> suranames = [
+  final List<String> suranames = [
     "الفاتحه",
     "البقرة",
     "آل عمران",
@@ -123,7 +122,7 @@ class QuranTap extends StatelessWidget {
     "الفلق",
     "الناس"
   ];
-  List<String> numberOfayat = [
+  final List<String> numberOfayat = [
     "7",
     "286",
     "200",
@@ -243,8 +242,6 @@ class QuranTap extends StatelessWidget {
   QuranTap({super.key});
   @override
   Widget build(BuildContext context) {
-    print(suranames.length);
-    print(numberOfayat.length);
     SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     double hight = MediaQuery.of(context).size.height;
     return Column(

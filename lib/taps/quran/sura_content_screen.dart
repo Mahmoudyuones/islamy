@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 class SuraContentScreen extends StatefulWidget {
   static const String routeName = '/sura_content';
 
-  SuraContentScreen({super.key});
+  const SuraContentScreen({super.key});
 
   @override
   State<SuraContentScreen> createState() => _SuraContentScreenState();
@@ -38,7 +38,7 @@ class _SuraContentScreenState extends State<SuraContentScreen> {
             title: Text(arg.suraName),
           ),
           body: Container(
-            padding: EdgeInsets.all(24),
+            padding: const EdgeInsets.all(24),
             margin: EdgeInsets.symmetric(
                 horizontal: 30,
                 vertical: MediaQuery.sizeOf(context).height * .05),
@@ -48,7 +48,7 @@ class _SuraContentScreenState extends State<SuraContentScreen> {
                     : AppThem.white,
                 borderRadius: BorderRadius.circular(25)),
             child: ayat.isEmpty
-                ? LoadingIndecator()
+                ? const LoadingIndecator()
                 : ListView.builder(
                     itemBuilder: (_, index) => Text(ayat[index],
                         textAlign: TextAlign.center,

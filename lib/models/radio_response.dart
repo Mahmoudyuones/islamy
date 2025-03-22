@@ -7,13 +7,13 @@ class RadioResponse {
     if (json['radios'] != null) {
       radios = <Radios>[];
       json['radios'].forEach((v) {
-        radios!.add(new Radios.fromJson(v));
+        radios!.add(Radios.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (radios != null) {
       data['radios'] = radios!.map((v) => v.toJson()).toList();
     }
@@ -37,7 +37,7 @@ class Radios {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['name'] = name;
     data['url'] = url;

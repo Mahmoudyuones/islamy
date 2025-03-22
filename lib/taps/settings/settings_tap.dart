@@ -4,14 +4,14 @@ import 'package:islamy/taps/settings/language.dart';
 import 'package:islamy/taps/settings/settings_provider.dart';
 import 'package:provider/provider.dart';
 
-class settingsTap extends StatefulWidget {
-  const settingsTap({super.key});
+class SettingsTap extends StatefulWidget {
+  const SettingsTap({super.key});
 
   @override
-  State<settingsTap> createState() => _settingsTapState();
+  State<SettingsTap> createState() => _SettingsTapState();
 }
 
-class _settingsTapState extends State<settingsTap> {
+class _SettingsTapState extends State<SettingsTap> {
   List<Language> languages = [
     Language(name: 'English', code: 'en'),
     Language(name: "العربية", code: 'ar')

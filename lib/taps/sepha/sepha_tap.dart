@@ -6,14 +6,14 @@ import 'package:islamy/taps/settings/settings_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class sephaTap extends StatefulWidget {
-  const sephaTap({super.key});
+class SephaTap extends StatefulWidget {
+  const SephaTap({super.key});
 
   @override
-  State<sephaTap> createState() => _sephaTapState();
+  State<SephaTap> createState() => _SephaTapState();
 }
 
-class _sephaTapState extends State<sephaTap> {
+class _SephaTapState extends State<SephaTap> {
   int angle = 0;
   int tasbehCounter = 0;
   int x = 0; //variable used to make the tasbehname changing every 33 press
