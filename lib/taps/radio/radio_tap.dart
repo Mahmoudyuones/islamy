@@ -17,7 +17,7 @@ class RadioTap extends StatefulWidget {
 
 class _RadioTapState extends State<RadioTap> {
   int currentIndex = 0;
-  int radioListLenght = 0;
+  int radioListLength = 0;
   final player = AudioPlayer();
   bool isPlaying = false;
   List<Radios> radiosToPlayUri = [];
@@ -54,10 +54,10 @@ class _RadioTapState extends State<RadioTap> {
           height: hight * .02,
         ),
         FutureBuilder(
-          future: getRdio(),
+          future: getRadio(),
           builder: (context, snapshot) {
             List<Radios>? radios = snapshot.data?.radios ?? [];
-            radioListLenght = radios.length;
+            radioListLength = radios.length;
             radiosToPlayUri = radios;
 
             if (snapshot.hasData) {
@@ -142,7 +142,7 @@ class _RadioTapState extends State<RadioTap> {
             ),
             IconButton(
                 onPressed: () {
-                  if (currentIndex < radioListLenght - 1) {
+                  if (currentIndex < radioListLength - 1) {
                     currentIndex++;
                     if (isPlaying) {
                       player.stop();
@@ -164,7 +164,7 @@ class _RadioTapState extends State<RadioTap> {
     );
   }
 
-  Future<RadioResponse> getRdio() async {
+  Future<RadioResponse> getRadio() async {
     Uri url = Uri.parse('https://mp3quran.net/api/v3/radios');
     final response = await http.get(url);
     var json = jsonDecode(response.body);
